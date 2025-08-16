@@ -5,8 +5,93 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TheMovies"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="The Movies" Height="450" Width="800">
+
     <Grid>
+        <!-- 2 columns -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="4*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- left column: 4 rows-->
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35" /> 
+                <RowDefinition Height="35" /> 
+                <RowDefinition Height="35" /> 
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Border BorderBrush="Black" BorderThickness="0.5">
+                <TextBlock Text="Administrer Film" 
+                           Background="Orange" 
+                           Grid.Row="0" 
+                           Padding="10"
+                           FontWeight="Bold"
+                           VerticalAlignment="Center"/>
+            </Border>
+
+            <Border Grid.Row="1" BorderBrush="Black" BorderThickness="0.5">
+                <TextBlock Text="Noget andet" 
+                           Background="LightGray" 
+                           Grid.Row="1" 
+                           Padding="10"                           
+                           FontWeight="Bold"
+                           VerticalAlignment="Center"/>
+            </Border>
+
+            <Border Grid.Row="2" BorderBrush="Black" BorderThickness="0.5">
+                <TextBlock Text="Osv..." 
+                           Background="LightGray" 
+                           Grid.Row="2" 
+                           Padding="10"                           
+                           FontWeight="Bold"
+                           VerticalAlignment="Center"/>
+            </Border>
+
+            <Border Grid.Row="3" BorderBrush="Black" BorderThickness="0.5">
+                <TextBlock Text="" 
+                           Background="LightGray" 
+                           Grid.Row="3" 
+                           Padding="10"/>
+            </Border>
+
+
+
+
+        </Grid>
+
+        <!-- right column: nested grid-->
+        <Grid Grid.Column="1" Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <!-- button -->
+                <RowDefinition Height="*" />
+                <!-- Listbox -->
+            </Grid.RowDefinitions>
+
+            <Button Grid.Row="0" Content="Tilføj Film" HorizontalAlignment="Left" Margin="20,20,0,0" VerticalAlignment="Top" Width="74" />
+
+            <!-- Movie List -->
+            <ListBox Grid.Row="1" Margin="20,20,20,20">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2" />
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Column="0" Text="{Binding Title}" />
+                            <TextBlock Grid.Column="1" Text="{Binding Duration}" />
+                            <TextBlock Grid.Column="2" Text="{Binding Genre}" />
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
 
     </Grid>
 </Window>
