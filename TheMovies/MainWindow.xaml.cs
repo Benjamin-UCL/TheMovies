@@ -19,6 +19,7 @@ namespace TheMovies
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new ViewModel.Movie_ViewModel();
         }
     }
 }
