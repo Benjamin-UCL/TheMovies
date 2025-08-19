@@ -13,15 +13,15 @@ using TheMovies.Utility;
 
 namespace TheMovies.ViewModel;
 
-public class Movie_ViewModel: INotifyPropertyChanged
+public class Movie_ViewModel: ViewModelBase
 {
     // Alle film
-    ObservableCollection<Movie> movies;
+    public ObservableCollection<Movie> Movies { get; } = new ObservableCollection<Movie>();
     // Sorterede film
-    ObservableCollection<Movie> moviesSorted;
-    ObservableCollection<Genre> Genres;
+    public ObservableCollection<Movie> moviesSorted;
+    public ObservableCollection<Genre> Genres { get; } = new ObservableCollection<Genre>();
 
-    
+
 
 
 
@@ -32,13 +32,11 @@ public class Movie_ViewModel: INotifyPropertyChanged
     {
         addMovieCommand = new RelayCommand(addMovie, canAddMovie);
 
-        Genres = new ObservableCollection<Genre>();
-        movies = new ObservableCollection<Movie>();
-
         // midlertidig dummy data til udvikling (scarfolding)
-        movies.Add(new Movie("The Shining", 123));
-        movies.Add(new Movie("Brokeback Mountain", 210));
-        movies.Add(new Movie("Snehvide", 93));
+        Movies.Add(new Movie("The Shining", 123));
+        Movies.Add(new Movie("Brokeback Mountain", 210));
+        Movies.Add(new Movie("Snehvide", 93));
+
 
         Genres.Add(new Genre("Drama"));
         Genres.Add(new Genre("Thriller"));
@@ -61,10 +59,6 @@ public class Movie_ViewModel: INotifyPropertyChanged
     // command canaddfilm
     private bool canAddMovie() { Console.WriteLine("Can add movie command attempted."); return true; }
 
-    // 2-way data binding (WPF Observer pattern) - kopiert fra skole eksemple
-    public event PropertyChangedEventHandler PropertyChanged;
-    protected void OnPropertyChanged([CallerMemberName] string name = null) =>
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 }
 
 
