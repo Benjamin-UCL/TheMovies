@@ -74,8 +74,8 @@
             <Button Grid.Row="0" Content="Tilføj Film" HorizontalAlignment="Left" Margin="20,20,0,0" VerticalAlignment="Top" Width="74" />
 
             <!-- Movie List -->
-            <ListBox Grid.Row="1" Margin="20,20,20,20">
-                <ListBox.ItemTemplate>
+            <ListBox Grid.Row="1" Margin="20,20,20,20" ItemsSource="{Binding Movies}" DisplayMemberPath="Title"/>
+            <!--<ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -89,8 +89,8 @@
                             <TextBlock Grid.Column="2" Text="{Binding Genre}" />
                         </Grid>
                     </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+                </ListBox.ItemTemplate>-->
+
         </Grid>
 
     </Grid>
