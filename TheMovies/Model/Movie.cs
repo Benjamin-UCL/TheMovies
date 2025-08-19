@@ -15,13 +15,15 @@ public class Movie
     public List<Genre> Genres { get; set; }
 
     //Constructor
-    public Movie(string title, int durationMin, Genre genre)
+    public Movie(string title, int durationMin, List<Genre> genre = null)
     {
         Title = title;
         DurationMin = durationMin;
-        Genre = genre;
+        Genres = genre;
     }
 
     // Hjælpe-metode til at vise genrer som tekst
     public string GenreAsText => string.Join(", ", Genres);
+
+    // duration to time
 }

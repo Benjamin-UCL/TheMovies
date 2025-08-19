@@ -13,7 +13,7 @@ public class Genre
     //Constructor
     public Genre(string name)
     {
-    Name = name;
+        Name = name;
     }
     public override string ToString() => Name;
 }

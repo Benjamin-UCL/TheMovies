@@ -19,11 +19,10 @@ public class Movie_ViewModel: INotifyPropertyChanged
     ObservableCollection<Movie> movies;
     // Sorterede film
     ObservableCollection<Movie> moviesSorted;
+    ObservableCollection<Genre> Genres;
 
-    // midlertidig dummy data til udvikling (scarfolding)
-    movies.Add(new Movie("The Shining", 123)); 
-    movies.Add(new Movie("Brokeback Mountain", 264)); 
-    movies.Add(new Movie("Snehvide", 93)); 
+    
+
 
 
     public ICommand addMovieCommand { get; }
@@ -33,7 +32,23 @@ public class Movie_ViewModel: INotifyPropertyChanged
     {
         addMovieCommand = new RelayCommand(addMovie, canAddMovie);
 
+        Genres = new ObservableCollection<Genre>();
+        movies = new ObservableCollection<Movie>();
+
+        // midlertidig dummy data til udvikling (scarfolding)
+        movies.Add(new Movie("The Shining", 123));
+        movies.Add(new Movie("Brokeback Mountain", 210));
+        movies.Add(new Movie("Snehvide", 93));
+
+        Genres.Add(new Genre("Drama"));
+        Genres.Add(new Genre("Thriller"));
+        Genres.Add(new Genre("Comedy"));
+        Genres.Add(new Genre("Horror"));
+        Genres.Add(new Genre("Romance"));
+        Genres.Add(new Genre("Animation"));
+        // dummy data end 
         // Initialize the collections via a method
+        // genres and movies
     }
 
     // COMMANDS
@@ -44,7 +59,7 @@ public class Movie_ViewModel: INotifyPropertyChanged
     }
 
     // command canaddfilm
-    private bool canAddMovie() { Console.WriteLine("Can sdd movie command attempted."); return true; }
+    private bool canAddMovie() { Console.WriteLine("Can add movie command attempted."); return true; }
 
     // 2-way data binding (WPF Observer pattern) - kopiert fra skole eksemple
     public event PropertyChangedEventHandler PropertyChanged;
