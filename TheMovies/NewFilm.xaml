@@ -101,18 +101,21 @@
     </Window.Resources>
         
     <StackPanel Margin="15">
+
         <TextBlock Text="Ny Film" 
                    FontSize="12" 
                    HorizontalAlignment="Left"/>
         
         <TextBox Name="FilmTitle"
-                 Style="{StaticResource EnterInfoStyle}">
-            Title
+                 Style="{StaticResource EnterInfoStyle}"
+                 Text="{Binding newTitle}">
+            
         </TextBox>
 
         <TextBox Name="Duration"
-                 Style="{StaticResource EnterInfoStyle}">
-            Varighed
+                 Style="{StaticResource EnterInfoStyle}"
+                 Text="{Binding newDuration}">
+            
         </TextBox>
         
         <TextBlock Text="Genre"
@@ -142,7 +145,8 @@
                 Margin="0,15"
                 Padding="15, 5"
                 Style="{StaticResource AddGenreButtonStyle}"
-                HorizontalAlignment="Left"/>
+                HorizontalAlignment="Left" 
+                Command="{Binding addMovieCommand}"/>
 
     </StackPanel>
 </Window>

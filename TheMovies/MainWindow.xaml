@@ -79,23 +79,31 @@
                     Click="OpenNewWindow_Click"/>
 
             <!-- Movie List -->
-            <ListBox Grid.Row="1" Margin="20,20,20,20" ItemsSource="{Binding Movies}" DisplayMemberPath="Title"/>
-            <!--<ListBox.ItemTemplate>
+            <ListBox Grid.Row="1" Margin="20,20,20,20" ItemsSource="{Binding Movies}">
+                <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="2" />
-                                <ColumnDefinition Width="auto" />
-                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="150" />
+                                <ColumnDefinition Width="50" />
+                                <ColumnDefinition Width="200" />
                             </Grid.ColumnDefinitions>
 
                             <TextBlock Grid.Column="0" Text="{Binding Title}" />
-                            <TextBlock Grid.Column="1" Text="{Binding Duration}" />
-                            <TextBlock Grid.Column="2" Text="{Binding Genre}" />
+                            <TextBlock Grid.Column="1" Text="{Binding DurationMin}" />
+                            <TextBlock Grid.Column="3" Text="{Binding GenreList}" />
+                            
                         </Grid>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>-->
 
+                        <!--<StackPanel Margin="5">
+                            <TextBlock Text="{Binding Title}" FontWeight="Bold"/>
+                            <TextBlock Text="{Binding DurationMin}" />
+                        </StackPanel>-->
+
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            
         </Grid>
 
     </Grid>

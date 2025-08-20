@@ -25,10 +25,11 @@ namespace TheMovies
 
         private void OpenNewWindow_Click(object sender, RoutedEventArgs e)
         {
-            // ny instance af newfilm vindue
+            var vm = this.DataContext as Movie_ViewModel;
             NewFilm newFilmWindow = new NewFilm();
-            // vis new film vindue
+            newFilmWindow.DataContext = vm;
             newFilmWindow.Show();
         }
     }
 }
+

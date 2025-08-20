@@ -15,17 +15,22 @@ namespace TheMovies.ViewModel;
 
 public class Movie_ViewModel: ViewModelBase
 {
-    // Alle film
     public ObservableCollection<Movie> Movies { get; } = new ObservableCollection<Movie>();
-    // Sorterede film
-    public ObservableCollection<Movie> moviesSorted;
     public ObservableCollection<Genre> Genres { get; } = new ObservableCollection<Genre>();
 
 
-
+    // Variabler til oprettelse af ny film.
+    private string _newTitle;
+    public string newTitle { get => _newTitle; set { _newTitle = value; OnPropertyChanged(); }}
+    private int _newDuration;
+    public int newDuration { get => _newDuration; set { _newDuration = value; OnPropertyChanged(); } }
+    public ObservableCollection<Genre> SelectedGenres = new ObservableCollection<Genre>();
+    // end
 
 
     public ICommand addMovieCommand { get; }
+
+    
 
     // Constructor
     public Movie_ViewModel() 
@@ -36,28 +41,35 @@ public class Movie_ViewModel: ViewModelBase
         Movies.Add(new Movie("The Shining", 123));
         Movies.Add(new Movie("Brokeback Mountain", 210));
         Movies.Add(new Movie("Snehvide", 93));
-
-
         Genres.Add(new Genre("Drama"));
         Genres.Add(new Genre("Thriller"));
         Genres.Add(new Genre("Comedy"));
         Genres.Add(new Genre("Horror"));
         Genres.Add(new Genre("Romance"));
         Genres.Add(new Genre("Animation"));
+        Movies[0].Genres.Add(this.Genres[0]);
+        Movies[0].Genres.Add(this.Genres[2]);
+        Movies[0].Genres.Add(this.Genres[5]);
+        Movies[1].Genres.Add(this.Genres[1]);
+        Movies[1].Genres.Add(this.Genres[2]);
+        Movies[2].Genres.Add(this.Genres[3]);
+        Movies[2].Genres.Add(this.Genres[4]);
         // dummy data end 
+
         // Initialize the collections via a method
         // genres and movies
     }
 
     // COMMANDS
-    // Command addfilm
     private void addMovie() 
     {
-        Console.WriteLine("Add movie command executed.");
+        Movie newMovie = new Movie(this.newTitle, this.newDuration);
+        // mangler tilføjelse af genre
+        Movies.Add(newMovie);
+        this.newTitle = "";
+        this.newDuration = 0;
     }
-
-    // command canaddfilm
-    private bool canAddMovie() { Console.WriteLine("Can add movie command attempted."); return true; }
+    private bool canAddMovie() { return true; }
 
 }
 
