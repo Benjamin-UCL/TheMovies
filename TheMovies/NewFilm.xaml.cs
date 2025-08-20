@@ -22,6 +22,10 @@ namespace TheMovies
         public NewFilm()
         {
             InitializeComponent();
+            
+
+            // persist new movie with genres to db
+
         }
     }
 }

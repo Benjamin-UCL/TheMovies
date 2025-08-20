@@ -99,6 +99,7 @@
     </Window.Resources>
         
     <StackPanel Margin="15">
+
         <TextBlock Text="Ny Film" 
                    FontSize="12" 
                    HorizontalAlignment="Left"/>

@@ -21,11 +21,9 @@ public class Movie_ViewModel: ViewModelBase
     public ObservableCollection<Movie> moviesSorted;
     public ObservableCollection<Genre> Genres { get; } = new ObservableCollection<Genre>();
 
-
-
-
-
     public ICommand addMovieCommand { get; }
+
+    
 
     // Constructor
     public Movie_ViewModel() 
@@ -36,8 +34,6 @@ public class Movie_ViewModel: ViewModelBase
         Movies.Add(new Movie("The Shining", 123));
         Movies.Add(new Movie("Brokeback Mountain", 210));
         Movies.Add(new Movie("Snehvide", 93));
-
-
         Genres.Add(new Genre("Drama"));
         Genres.Add(new Genre("Thriller"));
         Genres.Add(new Genre("Comedy"));
@@ -45,6 +41,7 @@ public class Movie_ViewModel: ViewModelBase
         Genres.Add(new Genre("Romance"));
         Genres.Add(new Genre("Animation"));
         // dummy data end 
+
         // Initialize the collections via a method
         // genres and movies
     }
