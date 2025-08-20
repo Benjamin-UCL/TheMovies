@@ -47,6 +47,13 @@ public class Movie_ViewModel: ViewModelBase
         Genres.Add(new Genre("Horror"));
         Genres.Add(new Genre("Romance"));
         Genres.Add(new Genre("Animation"));
+        Movies[0].Genres.Add(this.Genres[0]);
+        Movies[0].Genres.Add(this.Genres[2]);
+        Movies[0].Genres.Add(this.Genres[5]);
+        Movies[1].Genres.Add(this.Genres[1]);
+        Movies[1].Genres.Add(this.Genres[2]);
+        Movies[2].Genres.Add(this.Genres[3]);
+        Movies[2].Genres.Add(this.Genres[4]);
         // dummy data end 
 
         // Initialize the collections via a method
