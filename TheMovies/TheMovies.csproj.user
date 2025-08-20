@@ -5,5 +5,8 @@
     <Compile Update="NewFilm.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="NewGenre.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 </Project>
