@@ -21,6 +21,12 @@ public class Movie_ViewModel: ViewModelBase
     public ObservableCollection<Movie> moviesSorted;
     public ObservableCollection<Genre> Genres { get; } = new ObservableCollection<Genre>();
 
+    private string _newTitle;
+    public string newTitle { get => _newTitle; set { _newTitle = value; OnPropertyChanged(); }}
+    private int _newDuration;
+    public int newDuration { get => _newDuration; set { _newDuration = value; OnPropertyChanged(); } }
+
+
     public ICommand addMovieCommand { get; }
 
     
@@ -50,7 +56,9 @@ public class Movie_ViewModel: ViewModelBase
     // Command addfilm
     private void addMovie() 
     {
-        Console.WriteLine("Add movie command executed.");
+        Movies.Add(new Movie(this.newTitle, this.newDuration));
+        this.newTitle = "";
+        this.newDuration = 0;
     }
 
     // command canaddfilm
