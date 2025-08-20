@@ -1,0 +1,145 @@
+﻿<Window x:Class="TheMovies.NewFilm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TheMovies"
+        mc:Ignorable="d"
+        Title="New Film" Height="350" Width="250">
+
+    <Window.Resources>
+        <Style x:Key="GenreButtonStyle" TargetType="ToggleButton">
+            <Setter Property="Margin" Value="0,5,5,5" />
+            <Setter Property="Padding" Value="5,0" />
+            <Setter Property="FontSize" Value="9" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="BorderBrush" Value="Black" />
+            <Setter Property="Background" Value="LightGray" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="HorizontalAlignment" Value="Left"/><!-- knapperne ændrer størrelse afhængig af tekstens længde -->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ToggleButton">
+                        <Border x:Name="border"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="1"
+                                CornerRadius="3"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                             VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <!-- Selected -->
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="Orange"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+                            <!-- Mouse Over -->
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#FFD48A"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Style til "+tilføj Genre" button -->
+        <Style x:Key="AddGenreButtonStyle" TargetType="Button">
+            <Setter Property="Margin" Value="0,5"/>
+            <Setter Property="Padding" Value="5,0"/>
+            <Setter Property="FontSize" Value="9"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="Background" Value="LightGray"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="1"
+                                CornerRadius="3"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>            
+        </Style>
+
+        <Style x:Key="EnterInfoStyle" TargetType="TextBox">
+            <Setter Property="Margin" Value="0,15,20,0"/>
+            <Setter Property="Padding" Value="5,2"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="1"
+                                CornerRadius="3"
+                                Padding="{TemplateBinding Padding}">
+                            <ScrollViewer x:Name="PART_ContentHost"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+
+            </Setter>
+        </Style>
+
+
+    </Window.Resources>
+        
+    <StackPanel Margin="15">
+        <TextBlock Text="Ny Film" 
+                   FontSize="12" 
+                   HorizontalAlignment="Left"/>
+        
+        <TextBox Name="FilmTitle"
+                 Style="{StaticResource EnterInfoStyle}">
+            Title
+        </TextBox>
+
+        <TextBox Name="Duration"
+                 Style="{StaticResource EnterInfoStyle}">
+            Varighed
+        </TextBox>
+        
+        <TextBlock Text="Genre"
+                   FontSize="12"
+                   Margin="0,10"
+                   Padding="0,10"/>
+
+        <WrapPanel>
+            <!-- GenreToggleButtons -->
+            <!-- Style for toggleable genre buttons -->
+            <ToggleButton Content="Biografi" Style="{StaticResource GenreButtonStyle}" />
+            <ToggleButton Content="Drama" Style="{StaticResource GenreButtonStyle}" />
+            <ToggleButton Content="Krigsfilm" Style="{StaticResource GenreButtonStyle}" />
+            <ToggleButton Content="Romance" Style="{StaticResource GenreButtonStyle}" />
+            <ToggleButton Content="Action" Style="{StaticResource GenreButtonStyle}" />
+            <ToggleButton Content="Historisk" Style="{StaticResource GenreButtonStyle}" />
+            <ToggleButton Content="Familie" Style="{StaticResource GenreButtonStyle}" />
+            <ToggleButton Content="Sport" Style="{StaticResource GenreButtonStyle}" />
+        </WrapPanel>
+
+        <Button Content="+ Tilføj genre" 
+                Style="{StaticResource AddGenreButtonStyle}"
+                HorizontalAlignment="Left"/>
+
+        <Button Content="Tilføj film"
+                Margin="0,15"
+                Padding="15, 5"
+                Style="{StaticResource AddGenreButtonStyle}"
+                HorizontalAlignment="Left" />
+
+    </StackPanel>
+</Window>

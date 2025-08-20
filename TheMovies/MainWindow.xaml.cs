@@ -22,5 +22,13 @@ namespace TheMovies
             InitializeComponent();
             DataContext = new Movie_ViewModel();
         }
+
+        private void OpenNewWindow_Click(object sender, RoutedEventArgs e)
+        {
+            // ny instance af newfilm vindue
+            NewFilm newFilmWindow = new NewFilm();
+            // vis new film vindue
+            newFilmWindow.Show();
+        }
     }
 }
