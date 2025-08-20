@@ -15,16 +15,17 @@ namespace TheMovies.ViewModel;
 
 public class Movie_ViewModel: ViewModelBase
 {
-    // Alle film
     public ObservableCollection<Movie> Movies { get; } = new ObservableCollection<Movie>();
-    // Sorterede film
-    public ObservableCollection<Movie> moviesSorted;
     public ObservableCollection<Genre> Genres { get; } = new ObservableCollection<Genre>();
 
+
+    // Variabler til oprettelse af ny film.
     private string _newTitle;
     public string newTitle { get => _newTitle; set { _newTitle = value; OnPropertyChanged(); }}
     private int _newDuration;
     public int newDuration { get => _newDuration; set { _newDuration = value; OnPropertyChanged(); } }
+    public ObservableCollection<Genre> SelectedGenres = new ObservableCollection<Genre>();
+    // end
 
 
     public ICommand addMovieCommand { get; }
@@ -53,16 +54,15 @@ public class Movie_ViewModel: ViewModelBase
     }
 
     // COMMANDS
-    // Command addfilm
     private void addMovie() 
     {
-        Movies.Add(new Movie(this.newTitle, this.newDuration));
+        Movie newMovie = new Movie(this.newTitle, this.newDuration);
+        // mangler tilføjelse af genre
+        Movies.Add(newMovie);
         this.newTitle = "";
         this.newDuration = 0;
     }
-
-    // command canaddfilm
-    private bool canAddMovie() { Console.WriteLine("Can add movie command attempted."); return true; }
+    private bool canAddMovie() { return true; }
 
 }
 
