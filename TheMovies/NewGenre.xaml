@@ -8,55 +8,7 @@
         Title="New Genre" Height="200" Width="250">
 
     <Window.Resources>
-        <!-- Style til "+tilføj Genre" button -->
-        <Style x:Key="AddSubmitButtonStyle" TargetType="Button">
-            <Setter Property="Margin" Value="0,5"/>
-            <Setter Property="Padding" Value="5,0"/>
-            <Setter Property="FontSize" Value="9"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="BorderBrush" Value="Black"/>
-            <Setter Property="Background" Value="LightGray"/>
-            <Setter Property="Foreground" Value="Black"/>
-            <Setter Property="Cursor" Value="Hand"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="1"
-                        CornerRadius="3"
-                        Padding="{TemplateBinding Padding}">
-                            <ContentPresenter HorizontalAlignment="Center"
-                                      VerticalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
 
-        <!-- Style til tekstboks til at indtaste information -->
-        <Style x:Key="EnterInfoStyle" TargetType="TextBox">
-            <Setter Property="Margin" Value="0,15,20,0"/>
-            <Setter Property="Padding" Value="5,2"/>
-            <Setter Property="FontSize" Value="12"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="BorderBrush" Value="Black"/>
-            <Setter Property="Foreground" Value="Black"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="TextBox">
-                        <Border Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="1"
-                        CornerRadius="3"
-                        Padding="{TemplateBinding Padding}">
-                            <ScrollViewer x:Name="PART_ContentHost"/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-
-            </Setter>
-        </Style>
     </Window.Resources>
     
     <StackPanel Margin="015">
@@ -70,9 +22,7 @@
         </TextBox>
 
         <Button Content="Tilføj genre"
-                Margin="0,15"
-                Padding="15, 5"
-                Style="{StaticResource AddSubmitButtonStyle}"
+                Style="{StaticResource SubmitButtonStyle}"
                 HorizontalAlignment="Left" />
 
 
