@@ -18,9 +18,9 @@ public class Movie
     //Constructor
     public Movie(string title, int durationMin, List<Genre> genre = null)
     {
-        Title = title;
-        DurationMin = durationMin;
-        Genres = new List<Genre>();
+        this.Title = title;
+        this.DurationMin = durationMin;
+        this.Genres = new List<Genre>();
     }
 
     public string GenreList => string.Join(", ", Genres.Select(g => g.Name));
@@ -28,19 +28,11 @@ public class Movie
     // Hjælpe-metode til at vise genrer som tekst
     public string GenreAsText => string.Join(", ", Genres);
 
-    // duration to time
-    //public string DurationInHoursAndMinutes()
-    //{
-    //    int hours = DurationMin / 60;
-    //    int minutes = DurationMin % 60;
-    //    return $"{hours}:{minutes}";
-    //}
-
-    private int DurationHours;
+    // duration to time  
     private string DurationMinutes()
     {
         string result = "123";
-        int minutes = DurationMin % 60;
+        int minutes = this.DurationMin % 60;
         result = minutes.ToString();
         if (minutes < 10)
         {
@@ -49,5 +41,5 @@ public class Movie
         return result;
     }
 
-    public string DurationInHoursandMinutes => $"{DurationMin / 60}:{DurationMin % 60}";
+    public string DurationInHoursandMinutes => $"{DurationMin / 60}:{DurationMinutes()}";
 }
