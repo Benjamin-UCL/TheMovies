@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TheMovies;
+using TheMovies.ViewModel;
 
 namespace TheMovies
 {
@@ -36,3 +38,8 @@ namespace TheMovies
         }
     }
 }
+
+//var vm = this.DataContext as Movie_ViewModel;
+//NewFilm newFilmWindow = new NewFilm();
+//newFilmWindow.DataContext = vm;
+//newFilmWindow.Show();

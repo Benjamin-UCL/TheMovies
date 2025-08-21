@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace TheMovies.Model;
 
@@ -28,4 +29,12 @@ public class Movie
     public string GenreAsText => string.Join(", ", Genres);
 
     // duration to time
+    //public string DurationInHoursAndMinutes()
+    //{
+    //    int hours = DurationMin / 60;
+    //    int minutes = DurationMin % 60;
+    //    return $"{hours}:{minutes}";
+    //}
+
+    public string DurationInHoursandMinutes => $"{DurationMin / 60}:{DurationMin % 60}";
 }

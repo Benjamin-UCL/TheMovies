@@ -37,7 +37,7 @@ public class CsvMovieRepository : IMovieRepository
             var genres = (parts.ElementAtOrDefault(2) ?? "")
                 .Split(';', System.StringSplitOptions.RemoveEmptyEntries)
                 .Select(s => new Genre(s.Trim()));
-            yield return new Movie(title, mins, genres);
+            yield return new Movie(title, mins);
         }
     }
 
