@@ -36,5 +36,18 @@ public class Movie
     //    return $"{hours}:{minutes}";
     //}
 
+    private int DurationHours;
+    private string DurationMinutes()
+    {
+        string result = "123";
+        int minutes = DurationMin % 60;
+        result = minutes.ToString();
+        if (minutes < 10)
+        {
+            result = minutes.ToString("D2");
+        }
+        return result;
+    }
+
     public string DurationInHoursandMinutes => $"{DurationMin / 60}:{DurationMin % 60}";
 }
