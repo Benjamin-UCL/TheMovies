@@ -5,11 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using TheMovies.Model;
 
-namespace TheMovies.Data
+namespace TheMovies.Data;
+
+public interface IMovieRepository
 {
-    public interface IMovieRepository
-    {
-        IEnumerable<Movie> GetAll();
-        void Add(Movie movie);
-    }
+    IEnumerable<Movie> GetAll();
+    void Add(Movie movie);
 }
