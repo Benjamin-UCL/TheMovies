@@ -15,24 +15,13 @@ using System.Windows.Shapes;
 namespace TheMovies
 {
     /// <summary>
-    /// Interaction logic for NewFilm.xaml
+    /// Interaction logic for NewGenre.xaml
     /// </summary>
-    public partial class NewFilm : Window
+    public partial class NewGenre : Window
     {
-        public NewFilm()
+        public NewGenre()
         {
             InitializeComponent();
-            
-
-            // persist new movie with genres to db
-
-        }
-
-        private void OpenNewWindow_Click(object sender, RoutedEventArgs e)
-        {
-            NewGenre newGenreWindow = new NewGenre();
-
-            newGenreWindow.Show();
         }
     }
 }

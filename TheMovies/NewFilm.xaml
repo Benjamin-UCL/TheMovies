@@ -8,6 +8,7 @@
         Title="New Film" Height="350" Width="250">
 
     <Window.Resources>
+        <!-- Style til genre knapper -->
         <Style x:Key="GenreButtonStyle" TargetType="ToggleButton">
             <Setter Property="Margin" Value="0,5,5,5" />
             <Setter Property="Padding" Value="5,0" />
@@ -72,6 +73,7 @@
             </Setter>            
         </Style>
 
+        <!-- Style til tekstboks til at indtaste information -->
         <Style x:Key="EnterInfoStyle" TargetType="TextBox">
             <Setter Property="Margin" Value="0,15,20,0"/>
             <Setter Property="Padding" Value="5,2"/>
@@ -136,7 +138,8 @@
 
         <Button Content="+ Tilføj genre" 
                 Style="{StaticResource AddGenreButtonStyle}"
-                HorizontalAlignment="Left"/>
+                HorizontalAlignment="Left"
+                Click="OpenNewWindow_Click"/>
 
         <Button Content="Tilføj film"
                 Margin="0,15"
