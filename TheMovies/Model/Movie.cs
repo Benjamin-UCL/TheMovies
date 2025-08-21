@@ -19,8 +19,10 @@ public class Movie
     {
         Title = title;
         DurationMin = durationMin;
-        Genres = genre;
+        Genres = new List<Genre>();
     }
+
+    public string GenreList => string.Join(", ", Genres.Select(g => g.Name));
 
     // Hjælpe-metode til at vise genrer som tekst
     public string GenreAsText => string.Join(", ", Genres);

@@ -33,5 +33,14 @@ namespace TheMovies
 
             DataContext = new Movie_ViewModel(genreRepo, movieRepo);
         }
+
+        private void OpenNewWindow_Click(object sender, RoutedEventArgs e)
+        {
+            var vm = this.DataContext as Movie_ViewModel;
+            NewFilm newFilmWindow = new NewFilm();
+            newFilmWindow.DataContext = vm;
+            newFilmWindow.Show();
+        }
     }
 }
+
