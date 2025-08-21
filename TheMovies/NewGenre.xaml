@@ -9,7 +9,7 @@
 
     <Window.Resources>
         <!-- Style til "+tilføj Genre" button -->
-        <Style x:Key="AddGenreButtonStyle" TargetType="Button">
+        <Style x:Key="AddSubmitButtonStyle" TargetType="Button">
             <Setter Property="Margin" Value="0,5"/>
             <Setter Property="Padding" Value="5,0"/>
             <Setter Property="FontSize" Value="9"/>
@@ -72,7 +72,7 @@
         <Button Content="Tilføj genre"
                 Margin="0,15"
                 Padding="15, 5"
-                Style="{StaticResource AddGenreButtonStyle}"
+                Style="{StaticResource AddSubmitButtonStyle}"
                 HorizontalAlignment="Left" />
 
 

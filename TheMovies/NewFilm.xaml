@@ -48,7 +48,7 @@
         </Style>
 
         <!-- Style til "+tilføj Genre" button -->
-        <Style x:Key="AddGenreButtonStyle" TargetType="Button">
+        <Style x:Key="SubmitButtonStyle" TargetType="Button">
             <Setter Property="Margin" Value="0,5"/>
             <Setter Property="Padding" Value="5,0"/>
             <Setter Property="FontSize" Value="9"/>
@@ -137,14 +137,14 @@
         </WrapPanel>
 
         <Button Content="+ Tilføj genre" 
-                Style="{StaticResource AddGenreButtonStyle}"
+                Style="{StaticResource SubmitButtonStyle}"
                 HorizontalAlignment="Left"
                 Click="OpenNewWindow_Click"/>
 
         <Button Content="Tilføj film"
                 Margin="0,15"
                 Padding="15, 5"
-                Style="{StaticResource AddGenreButtonStyle}"
+                Style="{StaticResource SubmitButtonStyle}"
                 HorizontalAlignment="Left" 
                 Command="{Binding addMovieCommand}"/>
 
