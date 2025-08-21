@@ -95,10 +95,7 @@
                             
                         </Grid>
 
-                        <!--<StackPanel Margin="5">
-                            <TextBlock Text="{Binding Title}" FontWeight="Bold"/>
-                            <TextBlock Text="{Binding DurationMin}" />
-                        </StackPanel>-->
+
 
                     </DataTemplate>
                 </ListBox.ItemTemplate>

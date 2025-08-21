@@ -9,6 +9,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TheMovies.ViewModel;
+using System.IO;
+using TheMovies.Data;
+//using System.IO.Path;
 
 namespace TheMovies
 {
@@ -21,6 +24,14 @@ namespace TheMovies
         {
             InitializeComponent();
             DataContext = new Movie_ViewModel();
+
+            //var dataDir = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "Data");
+            //var genresCsv = Path.Combine(dataDir, "genres.csv");
+            //var moviesCsv = Path.Combine(dataDir, "movies.csv");
+
+            //var genreRepo = new CsvGenreRepository(genresCsv);
+            //var movieRepo = new CsvMovieRepository(moviesCsv);
+
         }
 
         private void OpenNewWindow_Click(object sender, RoutedEventArgs e)

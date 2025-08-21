@@ -10,6 +10,7 @@ using System.Windows;
 using System.Windows.Input;
 using TheMovies.Model;
 using TheMovies.Utility;
+using TheMovies.Data;
 
 namespace TheMovies.ViewModel;
 
