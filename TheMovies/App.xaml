@@ -4,6 +4,11 @@
              xmlns:local="clr-namespace:TheMovies"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Style/ButtonDictionary.xaml"/>
+                <ResourceDictionary Source="Style/TextBoxDictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

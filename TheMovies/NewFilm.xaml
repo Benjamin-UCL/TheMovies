@@ -8,96 +8,7 @@
         Title="New Film" Height="350" Width="250">
 
     <Window.Resources>
-        <!-- Style til genre knapper -->
-        <Style x:Key="GenreButtonStyle" TargetType="ToggleButton">
-            <Setter Property="Margin" Value="0,5,5,5" />
-            <Setter Property="Padding" Value="5,0" />
-            <Setter Property="FontSize" Value="9" />
-            <Setter Property="BorderThickness" Value="1" />
-            <Setter Property="BorderBrush" Value="Black" />
-            <Setter Property="Background" Value="LightGray" />
-            <Setter Property="Foreground" Value="Black" />
-            <Setter Property="Cursor" Value="Hand" />
-            <Setter Property="HorizontalAlignment" Value="Left"/><!-- knapperne ændrer størrelse afhængig af tekstens længde -->
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="ToggleButton">
-                        <Border x:Name="border"
-                                Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="1"
-                                CornerRadius="3"
-                                Padding="{TemplateBinding Padding}">
-                            <ContentPresenter HorizontalAlignment="Center"
-                                             VerticalAlignment="Center"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <!-- Selected -->
-                            <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="Orange"/>
-                                <Setter Property="Foreground" Value="White"/>
-                            </Trigger>
-                            <!-- Mouse Over -->
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="#FFD48A"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <!-- Style til "+tilføj Genre" button -->
-        <Style x:Key="AddGenreButtonStyle" TargetType="Button">
-            <Setter Property="Margin" Value="0,5"/>
-            <Setter Property="Padding" Value="5,0"/>
-            <Setter Property="FontSize" Value="9"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="BorderBrush" Value="Black"/>
-            <Setter Property="Background" Value="LightGray"/>
-            <Setter Property="Foreground" Value="Black"/>
-            <Setter Property="Cursor" Value="Hand"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="1"
-                                CornerRadius="3"
-                                Padding="{TemplateBinding Padding}">
-                            <ContentPresenter HorizontalAlignment="Center"
-                                              VerticalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>            
-        </Style>
-
-        <!-- Style til tekstboks til at indtaste information -->
-        <Style x:Key="EnterInfoStyle" TargetType="TextBox">
-            <Setter Property="Margin" Value="0,15,20,0"/>
-            <Setter Property="Padding" Value="5,2"/>
-            <Setter Property="FontSize" Value="12"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="BorderBrush" Value="Black"/>
-            <Setter Property="Foreground" Value="Black"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="TextBox">
-                        <Border Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="1"
-                                CornerRadius="3"
-                                Padding="{TemplateBinding Padding}">
-                            <ScrollViewer x:Name="PART_ContentHost"/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-
-            </Setter>
-        </Style>
-
-
+ 
     </Window.Resources>
         
     <StackPanel Margin="15">
@@ -137,14 +48,14 @@
         </WrapPanel>
 
         <Button Content="+ Tilføj genre" 
-                Style="{StaticResource AddGenreButtonStyle}"
+                Style="{StaticResource SubmitButtonStyle}"
+                Margin="0,5"
+                Padding="5,0"
                 HorizontalAlignment="Left"
                 Click="OpenNewWindow_Click"/>
 
         <Button Content="Tilføj film"
-                Margin="0,15"
-                Padding="15, 5"
-                Style="{StaticResource AddGenreButtonStyle}"
+                Style="{StaticResource SubmitButtonStyle}"
                 HorizontalAlignment="Left" 
                 Command="{Binding addMovieCommand}"/>
 
