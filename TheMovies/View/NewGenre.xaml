@@ -17,13 +17,14 @@
                    HorizontalAlignment="Left" />
 
         <TextBox Name="FilmGenre"
-                 Style="{StaticResource EnterInfoStyle}">
-            Genre
-        </TextBox>
+                 Style="{StaticResource EnterInfoStyle}"
+                 Text ="{Binding newGenreName}"/>
+
 
         <Button Content="Tilføj genre"
                 Style="{StaticResource SubmitButtonStyle}"
-                HorizontalAlignment="Left" />
+                HorizontalAlignment="Left"
+                Command="{Binding addGenreCommand}"/>
 
 
 

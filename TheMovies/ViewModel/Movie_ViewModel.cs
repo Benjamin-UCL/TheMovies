@@ -28,12 +28,18 @@ public class Movie_ViewModel: ViewModelBase
     public ObservableCollection<Genre> SelectedGenres = new ObservableCollection<Genre>();
     // end
 
+    // Variable til oprettelse af ny genre
+    private string _newGenreName;
+    public string newGenreName { get => _newGenreName; set { _newGenreName = value; OnPropertyChanged(); } }
+
+    //end
 
 
     // Constructor
     public Movie_ViewModel() 
     {
         addMovieCommand = new RelayCommand(addMovie, canAddMovie);
+        addGenreCommand = new RelayCommand(addGenre, canAddGenre);
 
         // midlertidig dummy data til udvikling (scarfolding)
         Movies.Add(new Movie("The Shining", 123));
@@ -76,6 +82,26 @@ public class Movie_ViewModel: ViewModelBase
         }
         return true;
     }
+
+    public ICommand addGenreCommand { get; }
+    private void addGenre() 
+    {
+        Genre newGenre = new Genre(this.newGenreName);
+        Genres.Add(newGenre);
+        this.newGenreName = "";
+        // alternativt can vi lukkker vinduet her
+    }
+
+    // Genbrug af kode? Seperate methode til canadd()?
+    private bool canAddGenre()
+    {
+        if (string.IsNullOrWhiteSpace(this.newGenreName))
+        {
+            return false;
+        }
+        return true;
+    }
+
 }
 
 

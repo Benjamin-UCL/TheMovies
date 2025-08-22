@@ -33,13 +33,9 @@ namespace TheMovies
         private void OpenNewWindow_Click(object sender, RoutedEventArgs e)
         {
             NewGenre newGenreWindow = new NewGenre();
-
+            var vm = this.DataContext as Movie_ViewModel;
+            newGenreWindow.DataContext = vm;
             newGenreWindow.Show();
         }
     }
 }
-
-//var vm = this.DataContext as Movie_ViewModel;
-//NewFilm newFilmWindow = new NewFilm();
-//newFilmWindow.DataContext = vm;
-//newFilmWindow.Show();
