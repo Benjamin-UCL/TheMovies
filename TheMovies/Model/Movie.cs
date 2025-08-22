@@ -11,11 +11,8 @@ public class Movie
 {
     public string Title { get; set; }
     public int DurationMin { get; set; }
-    
-    // Muligheden for at have flere genrer til én film 
     public List<Genre> Genres { get; set; }
 
-    //Constructor
     public Movie(string title, int durationMin, List<Genre> genre = null)
     {
         this.Title = title;
@@ -25,10 +22,6 @@ public class Movie
 
     public string GenreList => string.Join(", ", Genres.Select(g => g.Name));
 
-    // Hjælpe-metode til at vise genrer som tekst
-    public string GenreAsText => string.Join(", ", Genres);
-
-    // duration to time  
     private string DurationMinutes()
     {
         string result = "123";
@@ -42,4 +35,15 @@ public class Movie
     }
 
     public string DurationInHoursandMinutes => $"{DurationMin / 60}:{DurationMinutes()}";
+
+    public override string ToString()
+    {
+        return $"{Title},{DurationMin}";
+    }
+
+    public static Movie FromString(string data)
+    {
+        string[] parts = data.Split(',');
+        return new Movie(parts[0], int.Parse(parts[1]));
+    }
 }

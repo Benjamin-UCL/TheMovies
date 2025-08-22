@@ -17,4 +17,10 @@ public class Genre
     }
 
     public override string ToString() => Name;
+
+    public static Genre FromString(string data) 
+    {
+        string[] parts = data.Split(',');
+        return new Genre(parts[0]);
+    }
 }

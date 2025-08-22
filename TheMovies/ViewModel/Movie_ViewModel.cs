@@ -16,6 +16,7 @@ namespace TheMovies.ViewModel;
 
 public class Movie_ViewModel: ViewModelBase
 {
+    public CsvDataHandler Db = new CsvDataHandler("Movies.csv", "Genres.csv");
     public ObservableCollection<Movie> Movies { get; } = new ObservableCollection<Movie>();
     public ObservableCollection<Genre> Genres { get; } = new ObservableCollection<Genre>();
 
@@ -26,42 +27,43 @@ public class Movie_ViewModel: ViewModelBase
     private int _newDuration;
     public int newDuration { get => _newDuration; set { _newDuration = value; OnPropertyChanged(); } }
     public ObservableCollection<Genre> SelectedGenres = new ObservableCollection<Genre>();
-    // end
 
     // Variable til oprettelse af ny genre
     private string _newGenreName;
     public string newGenreName { get => _newGenreName; set { _newGenreName = value; OnPropertyChanged(); } }
-
     //end
 
 
     // Constructor
     public Movie_ViewModel() 
     {
+        
         addMovieCommand = new RelayCommand(addMovie, canAddMovie);
         addGenreCommand = new RelayCommand(addGenre, canAddGenre);
-
+        Db.FetchAllGenres().ForEach(g => Genres.Add(g));
+        Db.FetchAllMovies().ForEach(m => Movies.Add(m));
         // midlertidig dummy data til udvikling (scarfolding)
-        Movies.Add(new Movie("The Shining", 123));
-        Movies.Add(new Movie("Brokeback Mountain", 210));
-        Movies.Add(new Movie("Snehvide", 93));
-        Genres.Add(new Genre("Drama"));
-        Genres.Add(new Genre("Thriller"));
-        Genres.Add(new Genre("Comedy"));
-        Genres.Add(new Genre("Horror"));
-        Genres.Add(new Genre("Romance"));
-        Genres.Add(new Genre("Animation"));
-        Movies[0].Genres.Add(this.Genres[0]);
-        Movies[0].Genres.Add(this.Genres[2]);
-        Movies[0].Genres.Add(this.Genres[5]);
-        Movies[1].Genres.Add(this.Genres[1]);
-        Movies[1].Genres.Add(this.Genres[2]);
-        Movies[2].Genres.Add(this.Genres[3]);
-        Movies[2].Genres.Add(this.Genres[4]);
+        //Movies.Add(new Movie("The Shining", 123));
+        //Movies.Add(new Movie("Brokeback Mountain", 210));
+        //Movies.Add(new Movie("Snehvide", 93));
+        //Genres.Add(new Genre("Drama"));
+        //Genres.Add(new Genre("Thriller"));
+        //Genres.Add(new Genre("Comedy"));
+        //Genres.Add(new Genre("Horror"));
+        //Genres.Add(new Genre("Romance"));
+        //Genres.Add(new Genre("Animation"));
+        //Movies[0].Genres.Add(this.Genres[0]);
+        //Movies[0].Genres.Add(this.Genres[2]);
+        //Movies[0].Genres.Add(this.Genres[5]);
+        //Movies[1].Genres.Add(this.Genres[1]);
+        //Movies[1].Genres.Add(this.Genres[2]);
+        //Movies[2].Genres.Add(this.Genres[3]);
+        //Movies[2].Genres.Add(this.Genres[4]);
         // dummy data end 
 
-        // Initialize the collections via a method
-        // genres and movies
+        //Db.WrtieMoviesToFile(Movies.ToList());
+        // load geners
+        // load movies
     }
 
     // COMMANDS
@@ -73,6 +75,7 @@ public class Movie_ViewModel: ViewModelBase
         Movies.Add(newMovie);
         this.newTitle = "";
         this.newDuration = 0;
+        Db.WrtieMoviesToFile(Movies.ToList());
     }
     private bool canAddMovie()
     {
@@ -89,10 +92,9 @@ public class Movie_ViewModel: ViewModelBase
         Genre newGenre = new Genre(this.newGenreName);
         Genres.Add(newGenre);
         this.newGenreName = "";
+        Db.WrtieGenresToFile(Genres.ToList());
         // alternativt can vi lukkker vinduet her
     }
-
-    // Genbrug af kode? Seperate methode til canadd()?
     private bool canAddGenre()
     {
         if (string.IsNullOrWhiteSpace(this.newGenreName))
@@ -101,9 +103,4 @@ public class Movie_ViewModel: ViewModelBase
         }
         return true;
     }
-
 }
-
-
-// første udkast
-// Mangler et fetch from database hook - skal både ske når siden loades, og når der er tilføjet eller redigeret film.
