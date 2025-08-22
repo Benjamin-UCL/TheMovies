@@ -59,5 +59,6 @@
                 HorizontalAlignment="Left" 
                 Command="{Binding addMovieCommand}"/>
 
+
     </StackPanel>
 </Window>

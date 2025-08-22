@@ -29,9 +29,6 @@ public class Movie_ViewModel: ViewModelBase
     // end
 
 
-    public ICommand addMovieCommand { get; }
-
-    
 
     // Constructor
     public Movie_ViewModel() 
@@ -62,6 +59,7 @@ public class Movie_ViewModel: ViewModelBase
     }
 
     // COMMANDS
+    public ICommand addMovieCommand { get; }
     private void addMovie() 
     {
         Movie newMovie = new Movie(this.newTitle, this.newDuration);
@@ -70,8 +68,14 @@ public class Movie_ViewModel: ViewModelBase
         this.newTitle = "";
         this.newDuration = 0;
     }
-    private bool canAddMovie() { return true; }
-
+    private bool canAddMovie()
+    {
+        if (string.IsNullOrWhiteSpace(this.newTitle) || this.newDuration <= 0)
+        {
+            return false;
+        }
+        return true;
+    }
 }
 
 
