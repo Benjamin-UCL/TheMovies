@@ -20,7 +20,6 @@ public class Movie_ViewModel: ViewModelBase
     public ObservableCollection<Movie> Movies { get; } = new ObservableCollection<Movie>();
     public ObservableCollection<Genre> Genres { get; } = new ObservableCollection<Genre>();
 
-
     // Variabler til oprettelse af ny film.
     private string _newTitle;
     public string newTitle { get => _newTitle; set { _newTitle = value; OnPropertyChanged(); }}
@@ -33,7 +32,6 @@ public class Movie_ViewModel: ViewModelBase
     public string newGenreName { get => _newGenreName; set { _newGenreName = value; OnPropertyChanged(); } }
     //end
 
-
     // Constructor
     public Movie_ViewModel() 
     {
@@ -42,28 +40,6 @@ public class Movie_ViewModel: ViewModelBase
         addGenreCommand = new RelayCommand(addGenre, canAddGenre);
         Db.FetchAllGenres().ForEach(g => Genres.Add(g));
         Db.FetchAllMovies().ForEach(m => Movies.Add(m));
-        // midlertidig dummy data til udvikling (scarfolding)
-        //Movies.Add(new Movie("The Shining", 123));
-        //Movies.Add(new Movie("Brokeback Mountain", 210));
-        //Movies.Add(new Movie("Snehvide", 93));
-        //Genres.Add(new Genre("Drama"));
-        //Genres.Add(new Genre("Thriller"));
-        //Genres.Add(new Genre("Comedy"));
-        //Genres.Add(new Genre("Horror"));
-        //Genres.Add(new Genre("Romance"));
-        //Genres.Add(new Genre("Animation"));
-        //Movies[0].Genres.Add(this.Genres[0]);
-        //Movies[0].Genres.Add(this.Genres[2]);
-        //Movies[0].Genres.Add(this.Genres[5]);
-        //Movies[1].Genres.Add(this.Genres[1]);
-        //Movies[1].Genres.Add(this.Genres[2]);
-        //Movies[2].Genres.Add(this.Genres[3]);
-        //Movies[2].Genres.Add(this.Genres[4]);
-        // dummy data end 
-
-        //Db.WrtieMoviesToFile(Movies.ToList());
-        // load geners
-        // load movies
     }
 
     // COMMANDS
