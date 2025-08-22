@@ -18,7 +18,7 @@
 
         <TextBox Name="FilmGenre"
                  Style="{StaticResource EnterInfoStyle}"
-                 Text ="{Binding newGenreName}"/>
+                 Text ="{Binding newGenreName,UpdateSourceTrigger=PropertyChanged}" />
 
 
         <Button Content="Tilføj genre"
