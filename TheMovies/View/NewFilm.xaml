@@ -37,14 +37,23 @@
         <WrapPanel>
             <!-- GenreToggleButtons -->
             <!-- Style for toggleable genre buttons -->
-            <ToggleButton Content="Biografi" Style="{StaticResource GenreButtonStyle}" />
+            <!--<ToggleButton Content="Biografi" Style="{StaticResource GenreButtonStyle}" />
             <ToggleButton Content="Drama" Style="{StaticResource GenreButtonStyle}" />
             <ToggleButton Content="Krigsfilm" Style="{StaticResource GenreButtonStyle}" />
             <ToggleButton Content="Romance" Style="{StaticResource GenreButtonStyle}" />
             <ToggleButton Content="Action" Style="{StaticResource GenreButtonStyle}" />
             <ToggleButton Content="Historisk" Style="{StaticResource GenreButtonStyle}" />
             <ToggleButton Content="Familie" Style="{StaticResource GenreButtonStyle}" />
-            <ToggleButton Content="Sport" Style="{StaticResource GenreButtonStyle}" />
+            <ToggleButton Content="Sport" Style="{StaticResource GenreButtonStyle}" />-->
+            <ItemsControl ItemsSource="{Binding Genres}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <ToggleButton Content="{Binding Name}" 
+                                      Style="{StaticResource GenreButtonStyle}" 
+                                      IsChecked="{Binding IsSelected, Mode=TwoWay}"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
         </WrapPanel>
 
         <Button Content="+ Tilføj genre" 
