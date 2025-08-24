@@ -19,13 +19,13 @@
         
         <TextBox Name="FilmTitle"
                  Style="{StaticResource EnterInfoStyle}"
-                 Text="{Binding newTitle}">
+                 Text="{Binding newTitle,UpdateSourceTrigger=PropertyChanged}">
             
         </TextBox>
 
         <TextBox Name="Duration"
                  Style="{StaticResource EnterInfoStyle}"
-                 Text="{Binding newDuration}">
+                 Text="{Binding newDuration,UpdateSourceTrigger=PropertyChanged}">
             
         </TextBox>
         
