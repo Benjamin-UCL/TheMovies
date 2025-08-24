@@ -16,6 +16,11 @@
         <TextBlock Text="Ny Film" 
                    FontSize="12" 
                    HorizontalAlignment="Left"/>
+
+        <Label Content="Titel" 
+               FontSize="8" 
+               Margin="0,10,0,0"
+               Padding="0,0"/>
         
         <TextBox Name="FilmTitle"
                  Style="{StaticResource EnterInfoStyle}"
@@ -23,6 +28,11 @@
             
         </TextBox>
 
+
+        <Label Content="Løbetid i minutter" 
+               FontSize="8" 
+               Margin="0,10,0,0"
+               Padding="0,0"/>
         <TextBox Name="Duration"
                  Style="{StaticResource EnterInfoStyle}"
                  Text="{Binding newDuration,UpdateSourceTrigger=PropertyChanged}">
@@ -34,16 +44,6 @@
                    Margin="0,10"
                    Padding="0,10"/>
 
-            <!-- GenreToggleButtons -->
-            <!-- Style for toggleable genre buttons -->
-            <!--<ToggleButton Content="Biografi" Style="{StaticResource GenreButtonStyle}" />
-            <ToggleButton Content="Drama" Style="{StaticResource GenreButtonStyle}" />
-            <ToggleButton Content="Krigsfilm" Style="{StaticResource GenreButtonStyle}" />
-            <ToggleButton Content="Romance" Style="{StaticResource GenreButtonStyle}" />
-            <ToggleButton Content="Action" Style="{StaticResource GenreButtonStyle}" />
-            <ToggleButton Content="Historisk" Style="{StaticResource GenreButtonStyle}" />
-            <ToggleButton Content="Familie" Style="{StaticResource GenreButtonStyle}" />
-            <ToggleButton Content="Sport" Style="{StaticResource GenreButtonStyle}" />-->
             <ItemsControl ItemsSource="{Binding Genres}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
