@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using TheMovies.Model;
+using TheMovies.Utility;
 
 namespace TheMovies.Data;
 
@@ -14,44 +15,33 @@ public class CsvMovieRepository : IMovieRepository
     public CsvMovieRepository(string filePath)
     {
         _file = filePath;
-        EnsureFile();
+        FileHelper.EnsureFile(_file);
     }
 
-    void EnsureFile()
+    public List<Movie> GetAll()
     {
-        var dir = Path.GetDirectoryName(_file);
-        if (!string.IsNullOrWhiteSpace(dir) && !Directory.Exists(dir))
-            Directory.CreateDirectory(dir);
-        if (!File.Exists(_file))
-            File.WriteAllText(_file, "Title,DurationMin,Genres\n");
-    }
+        List<Movie> movies = new List<Movie>();
 
-    public IEnumerable<Movie> GetAll()
-    {
-        foreach (var line in File.ReadAllLines(_file).Skip(1))
+        using (StreamReader sr = new StreamReader(this._file))
         {
-            if (string.IsNullOrWhiteSpace(line)) continue;
-            var parts = line.Split(',', 3);
-            var title = parts.ElementAtOrDefault(0) ?? "";
-            int.TryParse(parts.ElementAtOrDefault(1), out var mins);
-            var genres = (parts.ElementAtOrDefault(2) ?? "")
-                .Split(';', System.StringSplitOptions.RemoveEmptyEntries)
-                .Select(s => new Genre(s.Trim()));
-            yield return new Movie(title, mins);
+            string line;
+            while ((line = sr.ReadLine()) != null)
+            {
+                if (!string.IsNullOrEmpty(line))
+                {
+                    movies.Add(Movie.FromString(line));
+                }
+            }
         }
+        return movies;
     }
 
-    public void Add(Movie movie)
+    public void SaveAll(List<Movie> list)
     {
-        var genresJoined = string.Join(';', movie.Genres.Select(g => g.Name));
-        using var sw = new StreamWriter(_file, append: true);
-        sw.WriteLine($"{Escape(movie.Title)},{movie.DurationMin},{Escape(genresJoined)}");
-    }
-
-    static string Escape(string s)
-    {
-        if (s is null) return "\"\"";
-        var e = s.Replace("\"", "\"\"");
-        return $"\"{e}\"";
+        using var sw = new StreamWriter(_file, append: false);
+        foreach (var movie in list)
+        {
+            sw.WriteLine(movie.ToString());
+        }
     }
 }

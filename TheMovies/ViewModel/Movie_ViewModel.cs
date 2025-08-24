@@ -16,7 +16,9 @@ namespace TheMovies.ViewModel;
 
 public class Movie_ViewModel: ViewModelBase
 {
-    public CsvDataHandler Db = new CsvDataHandler("Movies.csv", "Genres.csv");
+    public CsvGenreRepository GenreRepository = new CsvGenreRepository("Genres.csv");
+    public CsvMovieRepository MovieRepository = new CsvMovieRepository("Movies.csv");
+
     public ObservableCollection<Movie> Movies { get; } = new ObservableCollection<Movie>();
     public ObservableCollection<Genre> Genres { get; } = new ObservableCollection<Genre>();
 
@@ -38,8 +40,8 @@ public class Movie_ViewModel: ViewModelBase
         
         addMovieCommand = new RelayCommand(addMovie, canAddMovie);
         addGenreCommand = new RelayCommand(addGenre, canAddGenre);
-        Db.FetchAllGenres().ForEach(g => Genres.Add(g));
-        Db.FetchAllMovies().ForEach(m => Movies.Add(m));
+        MovieRepository.GetAll().ForEach( m => Movies.Add(m));
+        GenreRepository.GetAll().ForEach(g => Genres.Add(g));
     }
 
     // COMMANDS
@@ -51,7 +53,7 @@ public class Movie_ViewModel: ViewModelBase
         Movies.Add(newMovie);
         this.newTitle = "";
         this.newDuration = 0;
-        Db.WrtieMoviesToFile(Movies.ToList());
+        MovieRepository.SaveAll(Movies.ToList());
     }
     private bool canAddMovie()
     {
@@ -68,8 +70,7 @@ public class Movie_ViewModel: ViewModelBase
         Genre newGenre = new Genre(this.newGenreName);
         Genres.Add(newGenre);
         this.newGenreName = "";
-        Db.WrtieGenresToFile(Genres.ToList());
-        // alternativt can vi lukkker vinduet her
+        GenreRepository.SaveAll(Genres.ToList());
     }
     private bool canAddGenre()
     {

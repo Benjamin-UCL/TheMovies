@@ -9,6 +9,6 @@ namespace TheMovies.Data;
 
 public interface IMovieRepository
 {
-    IEnumerable<Movie> GetAll();
-    void Add(Movie movie);
+    List<Movie> GetAll();
+    void SaveAll(List<Movie> list);
 }

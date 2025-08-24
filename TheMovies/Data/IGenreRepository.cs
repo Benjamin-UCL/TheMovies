@@ -11,7 +11,7 @@ namespace TheMovies.Data;
 
 public interface IGenreRepository
 {
-    IEnumerable<Genre> GetAll();
-    void Add(Genre genre);
+    List<Genre> GetAll();
+    void SaveAll(List<Genre> list);
 }
 
