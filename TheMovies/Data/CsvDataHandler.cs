@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TheMovies.Model;
+using TheMovies.Utility;
 
 namespace TheMovies.Data;
 
@@ -42,6 +43,9 @@ public class CsvDataHandler
 
     public List<Movie> FetchAllMovies()
     {
+        //Forklaring nedunder i FetchAllGenrs()
+        FileHelper.EnsureFileExists(MovieFilePath);
+
         List<Movie> movies = new List<Movie>();
 
         using (StreamReader sr = new StreamReader(MovieFilePath))
@@ -60,6 +64,15 @@ public class CsvDataHandler
 
     public List<Genre> FetchAllGenres()
     {
+    /* Tjek hvis filen eksisterer, ellers oepret den
+    if (!File.Exists(GenreFilePath))
+    {
+        File.Create(GenreFilePath).Close();
+    }*/
+    // up top replaced with method in Filehelper class in Utility folder, because same method can be (and is) used in FetchAllMovies() as well
+
+        FileHelper.EnsureFileExists(GenreFilePath);
+
         List<Genre> genres = new List<Genre>();
 
         using (StreamReader sr = new StreamReader(GenreFilePath))
