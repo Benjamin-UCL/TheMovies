@@ -12,10 +12,16 @@ namespace TheMovies.Model
         
         public string Location { get; set; }
 
-        public Cinema(string name, string location)
+        public List<CinemaHall> CinemaHalls { get; set; }
+
+        public List<Screening> Screenings { get; set; }
+
+        public Cinema(string name, string location, List<CinemaHall> cinemaHall = null, List<Screening> screening = null)
         {
             Name = name;
             Location = location;
+            CinemaHalls = cinemaHall;
+            Screenings = screening;
         }
         public override string ToString()
         {
