@@ -53,6 +53,7 @@ public class Movie_ViewModel: ViewModelBase
     private void addMovie() 
     {
         Movie newMovie = new Movie(this.newTitle, this.newDuration);
+        newMovie.Director = this.newDirector; 
         // mangler tilføjelse af genre
         Movies.Add(newMovie);
         this.newTitle = "";
