@@ -14,10 +14,10 @@ public class Movie
     public int DurationMin { get; set; }
     public List<Genre> Genres { get; set; }
 
-    public Movie(string title, int durationMin, List<Genre> genre = null)
+    public Movie(string title, string director, int durationMin, List<Genre> genre = null)
     {
         this.Title = title;
-        this.Director = "Unknown";
+        this.Director = director;
         this.DurationMin = durationMin;
         this.Genres = new List<Genre>();
     }
@@ -40,12 +40,12 @@ public class Movie
 
     public override string ToString()
     {
-        return $"{Title},{DurationMin}";
+        return $"{Title},{Director},{DurationMin}";
     }
 
     public static Movie FromString(string data)
     {
         string[] parts = data.Split(',');
-        return new Movie(parts[0], int.Parse(parts[1]));
+        return new Movie(parts[0], parts[1], int.Parse(parts[2]));
     }
 }

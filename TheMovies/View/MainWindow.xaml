@@ -86,12 +86,14 @@
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="150" />
+                                <ColumnDefinition Width="150" />
                                 <ColumnDefinition Width="50" />
                                 <ColumnDefinition Width="200" />
                             </Grid.ColumnDefinitions>
 
                             <TextBlock Grid.Column="0" Text="{Binding Title}" />
-                            <TextBlock Grid.Column="1" Text="{Binding DurationInHoursandMinutes}" />
+                            <TextBlock Grid.Column="1" Text="{Binding Director}" />
+                            <TextBlock Grid.Column="2" Text="{Binding DurationInHoursandMinutes}" />
                             <TextBlock Grid.Column="3" Text="{Binding GenreList}" />
                             
                         </Grid>
