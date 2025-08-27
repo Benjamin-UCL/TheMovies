@@ -45,13 +45,14 @@ public class Movie_ViewModel: ViewModelBase
         
         addMovieCommand = new RelayCommand(addMovie, canAddMovie);
         addGenreCommand = new RelayCommand(addGenre, canAddGenre);
+        AttachGenreCommand = new RelayCommand(attachGenre, canattachGenre);
         MovieRepository.GetAll().ForEach( m => Movies.Add(m));
         GenreRepository.GetAll().ForEach(g => Genres.Add(g));
     }
 
     // COMMANDS
     public ICommand addMovieCommand { get; }
-    private void addMovie() 
+    private void addMovie(object parameter) 
     {
         Movie newMovie = new Movie(this.newTitle, this.newDirector, this.newDuration);       
         // mangler tilføjelse af genre
@@ -71,7 +72,7 @@ public class Movie_ViewModel: ViewModelBase
     }
 
     public ICommand addGenreCommand { get; }
-    private void addGenre() 
+    private void addGenre(object parameter) 
     {
         Genre newGenre = new Genre(this.newGenreName);
         Genres.Add(newGenre);
@@ -86,4 +87,28 @@ public class Movie_ViewModel: ViewModelBase
         }
         return true;
     }
+
+    public ICommand AttachGenreCommand { get; }
+
+    public void attachGenre(object parameter)
+    {
+        if (parameter is Genre clickedGenre)
+        {
+            MessageBox.Show(
+                $"{clickedGenre.Name} blev klikket!",
+                "Succes",
+                MessageBoxButton.OK,
+                MessageBoxImage.Information);
+        }
+        //Når der bliver klikket skal genren tilføjes til vores Selected Genre liste
+        //SelectedGenres.Add(clickedGenre);
+
+        //Hvis genren allerede er på listen skal den fjernes fra listen
+    }
+
+    public bool canattachGenre()
+    {
+        return true;
+    }
 }
+
