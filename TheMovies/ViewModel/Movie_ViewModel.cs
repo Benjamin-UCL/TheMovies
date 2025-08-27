@@ -29,6 +29,10 @@ public class Movie_ViewModel: ViewModelBase
     public int newDuration { get => _newDuration; set { _newDuration = value; OnPropertyChanged(); } }
     public ObservableCollection<Genre> SelectedGenres = new ObservableCollection<Genre>();
 
+    //Variabler til oprettelse af ny instruktør
+    private string _newDirector;
+    public string newDirector { get => _newDirector; set { _newDirector = value; OnPropertyChanged(); } }
+
     // Variable til oprettelse af ny genre
     private string _newGenreName;
     public string newGenreName { get => _newGenreName; set { _newGenreName = value; OnPropertyChanged(); } }
@@ -52,6 +56,7 @@ public class Movie_ViewModel: ViewModelBase
         // mangler tilføjelse af genre
         Movies.Add(newMovie);
         this.newTitle = "";
+        this.newDirector = "";
         this.newDuration = 0;
         MovieRepository.SaveAll(Movies.ToList());
     }

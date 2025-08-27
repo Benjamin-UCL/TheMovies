@@ -10,12 +10,14 @@ namespace TheMovies.Model;
 public class Movie
 {
     public string Title { get; set; }
+    public string Director { get; set; }
     public int DurationMin { get; set; }
     public List<Genre> Genres { get; set; }
 
     public Movie(string title, int durationMin, List<Genre> genre = null)
     {
         this.Title = title;
+        this.Director = "Unknown";
         this.DurationMin = durationMin;
         this.Genres = new List<Genre>();
     }
