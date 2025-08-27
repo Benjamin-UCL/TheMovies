@@ -117,6 +117,38 @@ namespace xUnitTest
             Assert.False(canExecute);
             Assert.Empty(vm.Genres);
         }
+
+        [Fact]
+        public void AddDirector_ShouldSetDirectorStringInMovie()
+        {
+            // Arrange
+            var vm = new Movie_ViewModel();
+            vm.newTitle = "Inception";
+            vm.newDuration = 148;
+            vm.newDirector = "Christopher Nolan";
+
+            // Act
+            vm.addMovieCommand.Execute(null);
+
+            // Assert
+            var movie = vm.Movies.First();
+            Assert.Equal("Christopher Nolan", movie.Director);  // <-- tjek på movie objekt
+        }
+
+        [Fact]
+        public void AddDirector_ShouldNotSet_WhenNameEmpty()
+        {
+            // Arrange
+            var vm = new Movie_ViewModel();
+            vm.newDirector = "";
+
+            // Act
+            bool canExecute = vm.addMovieCommand.CanExecute(null); // hvis du bruger samme canExecute som for movie
+
+            // Assert
+            Assert.False(canExecute);
+            Assert.Equal("", vm.newDirector);
+        }
     }
 }
 
