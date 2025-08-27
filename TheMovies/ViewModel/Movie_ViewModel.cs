@@ -19,8 +19,10 @@ public class Movie_ViewModel: ViewModelBase
     public CsvGenreRepository GenreRepository = new CsvGenreRepository("Genres.csv");
     public CsvMovieRepository MovieRepository = new CsvMovieRepository("Movies.csv");
 
+
     public ObservableCollection<Movie> Movies { get; } = new ObservableCollection<Movie>();
     public ObservableCollection<Genre> Genres { get; } = new ObservableCollection<Genre>();
+
 
     // Variabler til oprettelse af ny film.
     private string _newTitle;
@@ -29,7 +31,6 @@ public class Movie_ViewModel: ViewModelBase
     public int newDuration { get => _newDuration; set { _newDuration = value; OnPropertyChanged(); } }
     public ObservableCollection<Genre> SelectedGenres = new ObservableCollection<Genre>();
 
-    //Variabler til oprettelse af ny instruktør
     private string _newDirector;
     public string newDirector { get => _newDirector; set { _newDirector = value; OnPropertyChanged(); } }
 
@@ -52,8 +53,7 @@ public class Movie_ViewModel: ViewModelBase
     public ICommand addMovieCommand { get; }
     private void addMovie() 
     {
-        Movie newMovie = new Movie(this.newTitle, this.newDuration);
-        newMovie.Director = this.newDirector; 
+        Movie newMovie = new Movie(this.newTitle, this.newDirector, this.newDuration);       
         // mangler tilføjelse af genre
         Movies.Add(newMovie);
         this.newTitle = "";
@@ -63,7 +63,7 @@ public class Movie_ViewModel: ViewModelBase
     }
     private bool canAddMovie()
     {
-        if (string.IsNullOrWhiteSpace(this.newTitle) || this.newDuration <= 0)
+        if (string.IsNullOrWhiteSpace(this.newTitle) || string.IsNullOrWhiteSpace(this.newDirector) || this.newDuration <= 0)
         {
             return false;
         }
