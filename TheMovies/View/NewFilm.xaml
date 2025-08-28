@@ -17,6 +17,7 @@
                    FontSize="12" 
                    HorizontalAlignment="Left"/>
 
+
         <Label Content="Titel" 
                FontSize="8" 
                Margin="0,10,0,0"

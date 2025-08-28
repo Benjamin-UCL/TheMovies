@@ -24,6 +24,7 @@ public class Movie_ViewModel: ViewModelBase
     public ObservableCollection<Genre> Genres { get; } = new ObservableCollection<Genre>();
 
 
+
     // Variabler til oprettelse af ny film.
     private string _newTitle;
     public string newTitle { get => _newTitle; set { _newTitle = value; OnPropertyChanged(); }}
@@ -94,16 +95,16 @@ public class Movie_ViewModel: ViewModelBase
     {
         if (parameter is Genre clickedGenre)
         {
-            MessageBox.Show(
-                $"{clickedGenre.Name} blev klikket!",
-                "Succes",
-                MessageBoxButton.OK,
-                MessageBoxImage.Information);
+            if(SelectedGenres.Contains(clickedGenre)) 
+            {
+                SelectedGenres.Remove(clickedGenre);
+            } 
+            
+            else 
+            {
+                SelectedGenres.Add(clickedGenre);
+            }
         }
-        //Når der bliver klikket skal genren tilføjes til vores Selected Genre liste
-        //SelectedGenres.Add(clickedGenre);
-
-        //Hvis genren allerede er på listen skal den fjernes fra listen
     }
 
     public bool canattachGenre()
