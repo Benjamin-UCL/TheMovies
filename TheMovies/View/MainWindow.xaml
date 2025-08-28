@@ -33,7 +33,7 @@
             </Border>
 
             <Border Grid.Row="1" BorderBrush="Black" BorderThickness="0.5">
-                <TextBlock Text="Noget andet" 
+                <TextBlock Text="Forestillinger" 
                            Background="LightGray" 
                            Grid.Row="1" 
                            Padding="10"                           
