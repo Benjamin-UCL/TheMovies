@@ -18,6 +18,7 @@ public class Movie_ViewModel: ViewModelBase
 {
     public CsvGenreRepository GenreRepository = new CsvGenreRepository("Genres.csv");
     public CsvMovieRepository MovieRepository = new CsvMovieRepository("Movies.csv");
+    // movie genre repository
 
 
     public ObservableCollection<Movie> Movies { get; } = new ObservableCollection<Movie>();
@@ -49,6 +50,9 @@ public class Movie_ViewModel: ViewModelBase
         AttachGenreCommand = new RelayCommand(attachGenre, canattachGenre);
         MovieRepository.GetAll().ForEach( m => Movies.Add(m));
         GenreRepository.GetAll().ForEach(g => Genres.Add(g));
+        //MovieGenreRepository.GetAll();
+        // hente all film_genre links
+        // loope igennem og tilf'je genre til deres film
     }
 
     // COMMANDS
@@ -56,12 +60,15 @@ public class Movie_ViewModel: ViewModelBase
     private void addMovie(object parameter) 
     {
         Movie newMovie = new Movie(this.newTitle, this.newDirector, this.newDuration);       
-        // mangler tilføjelse af genre
         Movies.Add(newMovie);
         this.newTitle = "";
         this.newDirector = "";
         this.newDuration = 0;
+        // tilf'jer genre
         MovieRepository.SaveAll(Movies.ToList());
+
+        // brug movie genre repository
+        // MovieGenreRepository.SaveAll(Movies.ToList());
     }
     private bool canAddMovie()
     {
