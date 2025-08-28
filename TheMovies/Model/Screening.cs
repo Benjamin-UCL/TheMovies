@@ -31,6 +31,7 @@ namespace TheMovies.Model
             string[] parts = data.Split(',');
             return new Screening(DateTime.Parse(parts[0]), DateTime.Parse(parts[1]), int.Parse(parts[2]));
         }
+
         // Metode til at beregne den totale varighed af en film inklusiv reklamer og rengøring
         public int DurationPlusCommercialsAndCleaning(Movie movie)
         {
