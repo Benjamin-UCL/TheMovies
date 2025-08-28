@@ -18,7 +18,7 @@ public class Movie_ViewModel: ViewModelBase
 {
     public CsvGenreRepository GenreRepository = new CsvGenreRepository("Genres.csv");
     public CsvMovieRepository MovieRepository = new CsvMovieRepository("Movies.csv");
-    // movie genre repository
+    public CsvMovieGenreRepository MovieGenreRepository = new CsvMovieGenreRepository("MovieGenres.csv");
 
 
     public ObservableCollection<Movie> Movies { get; } = new ObservableCollection<Movie>();
@@ -50,25 +50,34 @@ public class Movie_ViewModel: ViewModelBase
         AttachGenreCommand = new RelayCommand(attachGenre, canattachGenre);
         MovieRepository.GetAll().ForEach( m => Movies.Add(m));
         GenreRepository.GetAll().ForEach(g => Genres.Add(g));
-        //MovieGenreRepository.GetAll();
-        // hente all film_genre links
-        // loope igennem og tilf'je genre til deres film
+        var connnections = MovieGenreRepository.GetAll();
+        foreach (var (MovieTitle, GenreName) in connnections)
+        {
+            var movie = Movies.FirstOrDefault(m => m.Title == MovieTitle);
+            var genre = Genres.FirstOrDefault(g => g.Name == GenreName);
+            if (movie != null && genre != null)
+            {
+                movie.Genres.Add(genre);
+            }
+        }
     }
 
     // COMMANDS
     public ICommand addMovieCommand { get; }
     private void addMovie(object parameter) 
     {
-        Movie newMovie = new Movie(this.newTitle, this.newDirector, this.newDuration);       
+        Movie newMovie = new Movie(this.newTitle, this.newDirector, this.newDuration);
+        foreach (var genre in SelectedGenres)
+        {
+            newMovie.Genres.Add(genre);
+        }
         Movies.Add(newMovie);
         this.newTitle = "";
         this.newDirector = "";
         this.newDuration = 0;
-        // tilf'jer genre
+   
         MovieRepository.SaveAll(Movies.ToList());
-
-        // brug movie genre repository
-        // MovieGenreRepository.SaveAll(Movies.ToList());
+        MovieGenreRepository.SaveAll(Movies.ToList());
     }
     private bool canAddMovie()
     {
